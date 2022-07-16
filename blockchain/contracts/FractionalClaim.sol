@@ -63,7 +63,7 @@ contract FractionalClaim {
 
     function claim(address _token, uint256 _amount) public payable correctToken(_token)
     {
-        ERC20(_token).transferFrom(msg.sender, address(this), _amount); //collect the token back, not working yet
+        ERC20(_token).transferFrom(msg.sender, address(this), _amount); //collect the token back
         ERC20Burnable(_token).burn( _amount);                                   //claimed, so burn this token
         payable(msg.sender).transfer((_amount).div(supply));                    //send the ETH to the claimant
 

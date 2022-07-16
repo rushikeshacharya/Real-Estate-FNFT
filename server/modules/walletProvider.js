@@ -2,11 +2,11 @@
 const Web3 = require('web3');
 require('dotenv').config();
 const webhookLink = process.env.webhookLink;
-const logger = require(`../config/winston`);
+// const logger = require(`../config/winston`);
 
 let web3;
 const getWalletProvider = async function() {
-  logger.info('getWalletProvider method invoked')
+//   logger.info('getWalletProvider method invoked')
     let httpProvider;
     if (typeof (httpProvider) === 'undefined') {
         httpProvider = new Web3.providers.HttpProvider(webhookLink, {keepAlive: false});
@@ -22,7 +22,7 @@ const getWalletProvider = async function() {
             }]
           });
         //const txnsStatus = await web3.eth.txpool.status();
-        //logger.debug(`===============TxPoolStatus============ ${parseInt(txnsStatus['pending'],10)}`);
+        logger.debug(`===============TxPoolStatus============ ${parseInt(txnsStatus['pending'],10)}`);
     }
     return web3;
 };
